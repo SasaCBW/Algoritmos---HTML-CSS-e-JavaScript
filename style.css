@@ -834,3 +834,15 @@ h1, h2, h3 {
     transition-duration: 0.01ms !important;
   }
 }
+
+.ending-message {
+  grid-column: 1 / -1;
+  padding: 22px;
+  border: 1px solid rgba(104, 224, 232, 0.2);
+  border-radius: 12px;
+  background: rgba(104, 224, 232, 0.06);
+  color: #c5e9ec;
+  font-size: 13px;
+  text-align: center;
+}
+
