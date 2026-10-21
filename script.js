@@ -1,346 +1,229 @@
+"use strict";
 
-const story = {
-  inicio: {
-    etapa: 1,
-    simbolo: "☾",
-    titulo: "Uma mensagem misteriosa",
-    texto: "Você encontra uma carta antiga sobre uma cidade escondida além das montanhas. Dizem que lá existe um segredo capaz de mudar o futuro. Ao anoitecer, duas trilhas aparecem diante de você: uma iluminada por cristais azuis e outra que desaparece dentro de uma floresta.",
-    escolhas: [
-      {
-        texto: "Seguir os cristais azuis",
-        detalhe: "Explorar uma trilha misteriosa.",
-        destino: "cristais"
-      },
-      {
-        texto: "Entrar na floresta",
-        detalhe: "Descobrir o que se esconde na escuridão.",
-        destino: "floresta"
-      }
+const scenes = {
+  start: {
+    chapter: 1,
+    tag: "PRÓLOGO",
+    symbol: "✧",
+    title: "A mensagem desconhecida",
+    text: "São quase meia-noite quando seu celular vibra. Uma mensagem de um número desconhecido aparece na tela: “Se quiser descobrir a verdade, esteja na entrada da Floresta das Sombras antes do amanhecer.” Você não conhece o remetente, mas reconhece o nome da floresta. Há anos, pessoas contam histórias estranhas sobre aquele lugar. O que você vai fazer?",
+    hint: "Sua aventura começa agora.",
+    journal: "Sua história ainda não começou. Prepare-se para descobrir o desconhecido.",
+    choices: [
+      { label: "Ir até a floresta", description: "Enfrentar o desconhecido.", next: "forest" },
+      { label: "Investigar a mensagem", description: "Buscar pistas antes de partir.", next: "research" }
     ]
   },
 
-  cristais: {
-    etapa: 2,
-    simbolo: "✧",
-    titulo: "O caminho luminoso",
-    texto: "Os cristais brilham conforme você avança. Depois de algum tempo, encontra uma porta de pedra com símbolos antigos. Ao lado dela, uma pequena chave prateada repousa sobre um pedestal. Mais adiante, você ouve o som de água vindo de uma passagem estreita.",
-    escolhas: [
-      {
-        texto: "Pegar a chave prateada",
-        detalhe: "Descobrir o que a chave pode abrir.",
-        destino: "chave"
-      },
-      {
-        texto: "Seguir o som da água",
-        detalhe: "Investigar a passagem secreta.",
-        destino: "rio"
-      }
+  forest: {
+    chapter: 2,
+    tag: "A FLORESTA",
+    symbol: "🌙",
+    title: "Entre as árvores",
+    text: "Você chega à entrada da floresta pouco antes do amanhecer. O ar está frio e uma trilha iluminada por pequenas luzes parece convidar você a entrar. Perto de uma árvore, encontra uma mochila antiga. Ao longe, ouve o som de água corrente. Você precisa decidir por onde começar.",
+    hint: "Você escolheu seguir diretamente para a floresta.",
+    journal: "Você chegou à Floresta das Sombras. Uma trilha iluminada e uma mochila abandonada podem guardar pistas.",
+    choices: [
+      { label: "Seguir as luzes da trilha", description: "Descobrir aonde o caminho leva.", next: "lights" },
+      { label: "Examinar a mochila", description: "Procurar algo que explique o mistério.", next: "backpack" }
     ]
   },
 
-  floresta: {
-    etapa: 2,
-    simbolo: "♧",
-    titulo: "Os segredos da floresta",
-    texto: "Entre as árvores, pequenas luzes dançam no ar. Você encontra uma raposa de olhos brilhantes que parece compreender suas palavras. Ela aponta para duas direções: uma torre abandonada e um lago que reflete um céu cheio de estrelas.",
-    escolhas: [
-      {
-        texto: "Visitar a torre",
-        detalhe: "Investigar as ruínas antigas.",
-        destino: "torre"
-      },
-      {
-        texto: "Ir até o lago",
-        detalhe: "Descobrir o mistério das águas.",
-        destino: "lago"
-      }
+  research: {
+    chapter: 2,
+    tag: "A INVESTIGAÇÃO",
+    symbol: "⌕",
+    title: "Pistas na madrugada",
+    text: "Antes de sair, você pesquisa o nome da floresta. Entre relatos antigos, encontra uma notícia sobre uma exploradora desaparecida que procurava um observatório escondido. A notícia menciona um símbolo em forma de estrela e um mapa incompleto. Você guarda a informação e decide ir até a floresta.",
+    hint: "A investigação revelou uma pista importante.",
+    journal: "Uma exploradora desaparecida procurava um observatório. O símbolo de estrela pode ajudar você.",
+    choices: [
+      { label: "Procurar o observatório", description: "Usar as informações encontradas.", next: "observatory" },
+      { label: "Seguir o rio mencionado na notícia", description: "Investigar outra possível pista.", next: "river" }
     ]
   },
 
-  chave: {
-    etapa: 3,
-    simbolo: "⚿",
-    titulo: "A porta do tempo",
-    texto: "A chave se encaixa perfeitamente na porta de pedra. Ao girá-la, um mecanismo desperta e revela uma biblioteca subterrânea. No centro, um livro flutua sobre um pedestal, iluminado por uma luz dourada. Suas páginas parecem aguardar alguém.",
-    escolhas: [
-      {
-        texto: "Abrir o livro dourado",
-        detalhe: "Conhecer o segredo da cidade.",
-        destino: "livro"
-      },
-      {
-        texto: "Examinar os símbolos",
-        detalhe: "Decifrar a mensagem escondida.",
-        destino: "simbolos"
-      }
+  lights: {
+    chapter: 3,
+    tag: "A TRILHA",
+    symbol: "✦",
+    title: "O caminho brilhante",
+    text: "As luzes conduzem você até uma clareira. No centro há uma pedra com o mesmo símbolo de estrela que apareceu na mensagem. Quando você toca a pedra, um compartimento se abre e revela um pequeno mapa. Nele, há uma marca apontando para uma construção escondida nas montanhas.",
+    hint: "Você encontrou um mapa misterioso.",
+    journal: "O mapa aponta para uma construção nas montanhas. A estrela parece ser a chave do enigma.",
+    choices: [
+      { label: "Subir em direção às montanhas", description: "Seguir a indicação do mapa.", next: "observatory" },
+      { label: "Voltar e procurar mais pistas", description: "Explorar a clareira com calma.", next: "backpack" }
     ]
   },
 
-  rio: {
-    etapa: 3,
-    simbolo: "≈",
-    titulo: "O rio escondido",
-    texto: "A passagem leva a um rio subterrâneo. Uma pequena embarcação está presa à margem e uma ponte de pedra cruza a correnteza. Do outro lado, uma luz dourada ilumina uma construção antiga.",
-    escolhas: [
-      {
-        texto: "Atravessar a ponte",
-        detalhe: "Seguir em direção à luz.",
-        destino: "ponte"
-      },
-      {
-        texto: "Usar a embarcação",
-        detalhe: "Explorar o rio desconhecido.",
-        destino: "barco"
-      }
+  backpack: {
+    chapter: 3,
+    tag: "O OBJETO PERDIDO",
+    symbol: "🎒",
+    title: "O diário da exploradora",
+    text: "Dentro da mochila, você encontra um diário protegido por uma capa impermeável. As páginas contam a história de alguém que descobriu um observatório antigo. A última anotação diz: “A resposta está onde o céu encontra a terra.” Um desenho mostra montanhas e um rio que se encontram perto de uma ponte.",
+    hint: "O diário revelou uma nova direção.",
+    journal: "O diário menciona uma ponte próxima ao rio e às montanhas. A exploradora esteve aqui antes de você.",
+    choices: [
+      { label: "Seguir para a ponte", description: "Investigar o encontro do rio com as montanhas.", next: "river" },
+      { label: "Ir direto às montanhas", description: "Procurar o observatório.", next: "observatory" }
     ]
   },
 
-  torre: {
-    etapa: 3,
-    simbolo: "♜",
-    titulo: "A torre esquecida",
-    texto: "No alto da torre, você encontra um mapa celeste e um diário de um antigo explorador. O diário fala de um portal que aparece somente quando as estrelas formam uma constelação especial. Uma escada leva ao observatório e outra desce até uma sala trancada.",
-    escolhas: [
-      {
-        texto: "Subir ao observatório",
-        detalhe: "Procurar a constelação.",
-        destino: "estrelas"
-      },
-      {
-        texto: "Explorar a sala trancada",
-        detalhe: "Investigar o diário do explorador.",
-        destino: "diario"
-      }
+  river: {
+    chapter: 4,
+    tag: "O RIO ESCONDIDO",
+    symbol: "≈",
+    title: "A ponte de pedra",
+    text: "O som da água leva você até uma ponte antiga. No outro lado, há uma placa com o símbolo de estrela e uma frase: “A verdade não pertence a quem a encontra, mas a quem escolhe compartilhá-la.” Você percebe que o mistério talvez seja maior do que uma simples descoberta. Ao lado da ponte, uma escadaria sobe pela montanha.",
+    hint: "Você encontrou uma mensagem deixada para alguém.",
+    journal: "A placa sugere que a descoberta deve ser compartilhada. A escadaria leva à região das montanhas.",
+    choices: [
+      { label: "Subir a escadaria", description: "Descobrir o que existe no alto.", next: "observatory" },
+      { label: "Registrar a mensagem e voltar", description: "Preservar a pista antes de continuar.", next: "archive" }
     ]
   },
 
-  lago: {
-    etapa: 3,
-    simbolo: "◉",
-    titulo: "O espelho das estrelas",
-    texto: "O lago reflete estrelas que não existem no céu verdadeiro. Ao tocar a água, você vê uma cidade brilhante e ouve uma voz dizendo que há duas maneiras de encontrá-la: seguir a constelação refletida ou procurar uma passagem entre as pedras.",
-    escolhas: [
-      {
-        texto: "Seguir as estrelas refletidas",
-        detalhe: "Confiar na visão do lago.",
-        destino: "estrelas"
-      },
-      {
-        texto: "Procurar entre as pedras",
-        detalhe: "Encontrar uma entrada escondida.",
-        destino: "ponte"
-      }
+  observatory: {
+    chapter: 4,
+    tag: "O OBSERVATÓRIO",
+    symbol: "🔭",
+    title: "A porta esquecida",
+    text: "No alto da montanha, você encontra uma construção de pedra coberta por plantas. A porta possui uma abertura em forma de estrela. O mapa e o símbolo parecem combinar perfeitamente. Ao entrar, encontra uma sala com livros, mapas antigos e um pequeno dispositivo luminoso. Uma inscrição na parede pergunta: “O que torna uma descoberta verdadeiramente valiosa?”",
+    hint: "Você chegou ao coração do mistério.",
+    journal: "O observatório guarda documentos e mapas antigos. A pergunta na parede parece ser a última chave.",
+    choices: [
+      { label: "Abrir os registros e compartilhar a descoberta", description: "Permitir que outras pessoas conheçam a história.", next: "goodEnding" },
+      { label: "Guardar o mapa e continuar investigando", description: "Procurar entender tudo antes de revelar.", next: "secretEnding" }
     ]
   },
 
-  livro: {
-    etapa: 4,
-    simbolo: "✦",
-    titulo: "O conhecimento perdido",
-    texto: "O livro revela que a cidade foi construída para proteger uma fonte de energia capaz de iluminar o mundo. Mas ela só pode ser encontrada por quem usa o conhecimento com responsabilidade. Uma última página descreve a localização de um portal.",
-    escolhas: [
-      {
-        texto: "Abrir o portal",
-        detalhe: "Descobrir a cidade escondida.",
-        destino: "final-bom"
-      },
-      {
-        texto: "Guardar o conhecimento",
-        detalhe: "Proteger o segredo para o futuro.",
-        destino: "final-sabio"
-      }
+  archive: {
+    chapter: 5,
+    tag: "OS REGISTROS",
+    symbol: "📜",
+    title: "Memórias preservadas",
+    text: "Você registra a mensagem e encontra, perto da ponte, uma pequena caixa de metal. Dentro há uma carta da exploradora. Ela explica que deixou pistas para que alguém pudesse localizar o observatório e preservar seus documentos. A carta termina com uma coordenada e uma palavra: “Esperança”.",
+    hint: "Você descobriu por que as pistas foram deixadas.",
+    journal: "A exploradora queria que seus documentos fossem preservados. A carta confirma a importância do observatório.",
+    choices: [
+      { label: "Levar a carta ao observatório", description: "Concluir a investigação.", next: "observatory" },
+      { label: "Voltar para casa e organizar as descobertas", description: "Preparar um relato da aventura.", next: "homeEnding" }
     ]
   },
 
-  simbolos: {
-    etapa: 4,
-    simbolo: "⌘",
-    titulo: "A mensagem decifrada",
-    texto: "Os símbolos formam uma frase: 'A verdadeira passagem se abre para quem compreende o valor de cada descoberta'. Ao terminar a leitura, as paredes se iluminam e uma porta aparece no fundo da biblioteca.",
-    escolhas: [
-      {
-        texto: "Entrar pela porta",
-        detalhe: "Continuar a exploração.",
-        destino: "final-bom"
-      },
-      {
-        texto: "Registrar os símbolos",
-        detalhe: "Levar a descoberta para casa.",
-        destino: "final-sabio"
-      }
-    ]
+  goodEnding: {
+    chapter: 6,
+    tag: "FINAL • A DESCOBERTA",
+    symbol: "✧",
+    title: "A luz compartilhada",
+    text: "Você organiza os documentos e compartilha a descoberta com pesquisadores que podem ajudar a preservar o observatório. Com o tempo, a história da exploradora é finalmente conhecida, e o lugar se torna um espaço de aprendizado. Você entende que o verdadeiro tesouro não estava escondido na montanha: era o conhecimento que poderia ser transmitido a outras pessoas. Sua aventura termina com uma descoberta que pertence a todos.",
+    hint: "Final alcançado: A luz compartilhada.",
+    journal: "Você revelou o mistério e ajudou a preservar a história do observatório.",
+    ending: true
   },
 
-  ponte: {
-    etapa: 4,
-    simbolo: "◇",
-    titulo: "A passagem dourada",
-    texto: "A ponte leva você a um salão escavado na montanha. No centro existe um portal dourado e, ao lado, um painel com inscrições antigas. Você percebe que pode atravessar imediatamente ou estudar as inscrições antes de prosseguir.",
-    escolhas: [
-      {
-        texto: "Atravessar o portal",
-        detalhe: "Ver o que existe do outro lado.",
-        destino: "final-bom"
-      },
-      {
-        texto: "Estudar as inscrições",
-        detalhe: "Compreender a história do lugar.",
-        destino: "final-sabio"
-      }
-    ]
+  secretEnding: {
+    chapter: 6,
+    tag: "FINAL • O SEGREDO",
+    symbol: "🌌",
+    title: "O guardião do horizonte",
+    text: "Você decide continuar pesquisando antes de revelar os documentos. Cada página abre novas perguntas, e o observatório se transforma no centro de uma longa investigação. Você assume a responsabilidade de proteger aquele conhecimento enquanto procura compreender a história por completo. Talvez outras pessoas descubram o lugar um dia, mas, por enquanto, o segredo continua com você.",
+    hint: "Final alcançado: O guardião do horizonte.",
+    journal: "Você escolheu proteger o segredo e continuar investigando o observatório.",
+    ending: true
   },
 
-  barco: {
-    etapa: 4,
-    simbolo: "≈",
-    titulo: "Além da correnteza",
-    texto: "O rio leva sua embarcação até uma caverna cheia de minerais luminosos. No fundo, você encontra uma saída para a superfície e uma passagem que segue até uma cidade subterrânea. Ambas parecem seguras, mas guardam destinos diferentes.",
-    escolhas: [
-      {
-        texto: "Explorar a cidade",
-        detalhe: "Descobrir a origem das luzes.",
-        destino: "final-bom"
-      },
-      {
-        texto: "Voltar com o mapa",
-        detalhe: "Compartilhar sua descoberta.",
-        destino: "final-sabio"
-      }
-    ]
-  },
-
-  estrelas: {
-    etapa: 4,
-    simbolo: "✧",
-    titulo: "O portal celeste",
-    texto: "As estrelas se alinham e um portal aparece diante de você. A passagem mostra uma cidade suspensa entre montanhas, iluminada por rios de luz. Uma inscrição diz que o viajante pode atravessar para explorar o lugar ou retornar para compartilhar o caminho com outras pessoas.",
-    escolhas: [
-      {
-        texto: "Atravessar o portal",
-        detalhe: "Conhecer a cidade perdida.",
-        destino: "final-bom"
-      },
-      {
-        texto: "Compartilhar o caminho",
-        detalhe: "Permitir que outros descubram a cidade.",
-        destino: "final-sabio"
-      }
-    ]
-  },
-
-  diario: {
-    etapa: 4,
-    simbolo: "▤",
-    titulo: "O diário do explorador",
-    texto: "O diário conta a história de alguém que encontrou a cidade, mas escolheu esconder sua localização até que o mundo estivesse preparado. Na última página, há um mapa completo e uma mensagem: 'Uma descoberta só ganha sentido quando sabemos como usá-la'.",
-    escolhas: [
-      {
-        texto: "Seguir o mapa",
-        detalhe: "Concluir a jornada.",
-        destino: "final-bom"
-      },
-      {
-        texto: "Preservar o diário",
-        detalhe: "Proteger a história da cidade.",
-        destino: "final-sabio"
-      }
-    ]
-  },
-
-  "final-bom": {
-    etapa: 5,
-    simbolo: "✦",
-    titulo: "A cidade além do horizonte",
-    texto: "Você atravessa o portal e finalmente encontra a cidade perdida. Torres brilhantes se erguem entre as montanhas, jardins luminosos cobrem as ruas e uma biblioteca guarda os conhecimentos de muitas gerações. Sua coragem levou você a uma descoberta extraordinária. A aventura termina, mas novas histórias começam aqui.",
-    final: true
-  },
-
-  "final-sabio": {
-    etapa: 5,
-    simbolo: "◇",
-    titulo: "O legado do explorador",
-    texto: "Você decide preservar o conhecimento que encontrou. Registra cada pista, protege os mapas e prepara o caminho para que futuras gerações possam explorar a cidade com responsabilidade. Você descobre que uma grande aventura não se mede apenas pelo lugar alcançado, mas também pelo que aprendemos durante a jornada.",
-    final: true
+  homeEnding: {
+    chapter: 6,
+    tag: "FINAL • A MEMÓRIA",
+    symbol: "📖",
+    title: "Uma história para contar",
+    text: "Você volta para casa levando as anotações e a carta da exploradora. Organiza cada pista e escreve um relato completo da jornada. Mesmo sem desvendar todos os detalhes, você consegue preservar as informações para quem quiser continuar a investigação. Ao olhar pela janela, percebe que a aventura mudou sua maneira de enxergar o mundo. Algumas respostas aparecem; outras se transformam em novas perguntas.",
+    hint: "Final alcançado: Uma história para contar.",
+    journal: "Você voltou para casa com pistas preservadas e uma história que poderá inspirar outras pessoas.",
+    ending: true
   }
 };
 
-const elements = {
-  symbol: document.getElementById("story-symbol"),
-  title: document.getElementById("story-title"),
-  text: document.getElementById("story-text"),
-  choices: document.getElementById("choices"),
-  choicesLabel: document.getElementById("choices-label"),
-  progressText: document.getElementById("progress-text"),
-  progressFill: document.getElementById("progress-fill"),
-  restart: document.getElementById("restart-button")
-};
+const initialScene = "start";
+let currentScene = initialScene;
+let visitedScenes = new Set([initialScene]);
+let journeySteps = 0;
 
-let currentScene = "inicio";
-let visitedScenes = new Set();
+const chapterTag = document.getElementById("chapter-tag");
+const chapterNumber = document.getElementById("chapter-number");
+const storySymbol = document.getElementById("story-symbol");
+const storyTitle = document.getElementById("story-title");
+const storyText = document.getElementById("story-text");
+const choicesContainer = document.getElementById("choices");
+const storyHint = document.getElementById("story-hint");
+const journalText = document.getElementById("journal-text");
+const progressText = document.getElementById("progress-text");
+const progressFill = document.getElementById("progress-fill");
+const restartButton = document.getElementById("restart-button");
 
-function showScene(sceneId) {
-  const scene = story[sceneId];
+function renderScene(sceneId) {
+  const scene = scenes[sceneId];
 
   if (!scene) {
-    console.error("Cena não encontrada:", sceneId);
+    storyTitle.textContent = "Ops! Caminho não encontrado";
+    storyText.textContent = "Não conseguimos encontrar esta parte da história. Reinicie a aventura para começar novamente.";
+    choicesContainer.replaceChildren();
     return;
   }
 
   currentScene = sceneId;
   visitedScenes.add(sceneId);
 
-  elements.symbol.textContent = scene.simbolo;
-  elements.title.textContent = scene.titulo;
-  elements.text.textContent = scene.texto;
+  chapterTag.textContent = scene.tag;
+  chapterNumber.textContent = `CAPÍTULO ${String(scene.chapter).padStart(2, "0")}`;
+  storySymbol.textContent = scene.symbol;
+  storyTitle.textContent = scene.title;
+  storyText.textContent = scene.text;
+  storyHint.textContent = scene.hint;
+  journalText.textContent = scene.journal;
 
-  const storyContent = document.querySelector(".story-content");
-  storyContent.style.animation = "none";
-  void storyContent.offsetWidth;
-  storyContent.style.animation = "appear 0.35s ease";
+  choicesContainer.replaceChildren();
 
-  elements.choices.replaceChildren();
-
-  if (scene.final) {
-    elements.choicesLabel.textContent = "FIM DESTA JORNADA";
-
-    const ending = document.createElement("div");
-    ending.className = "ending-message";
-    ending.textContent = "✧ Você concluiu a aventura! Que tal descobrir o outro final?";
-    elements.choices.appendChild(ending);
+  if (scene.ending) {
+    const endingNote = document.createElement("p");
+    endingNote.className = "choice-copy";
+    endingNote.innerHTML = "<strong>Fim desta jornada.</strong><small>Você pode reiniciar para descobrir outros caminhos.</small>";
+    choicesContainer.appendChild(endingNote);
   } else {
-    elements.choicesLabel.textContent = "QUAL SERÁ SUA ESCOLHA?";
-
-    scene.escolhas.forEach((choice, index) => {
+    scene.choices.forEach((choice, index) => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "choice-button";
 
-      const number = document.createElement("span");
-      number.className = "choice-number";
-      number.textContent = String(index + 1).padStart(2, "0");
+      const letter = document.createElement("span");
+      letter.className = "choice-letter";
+      letter.textContent = String.fromCharCode(65 + index);
 
       const copy = document.createElement("span");
       copy.className = "choice-copy";
 
       const title = document.createElement("strong");
-      title.textContent = choice.texto;
+      title.textContent = choice.label;
 
-      const detail = document.createElement("small");
-      detail.textContent = choice.detalhe;
+      const description = document.createElement("small");
+      description.textContent = choice.description;
 
       const arrow = document.createElement("span");
       arrow.className = "choice-arrow";
       arrow.textContent = "↗";
-      arrow.setAttribute("aria-hidden", "true");
 
-      copy.append(title, detail);
-      button.append(number, copy, arrow);
+      copy.append(title, description);
+      button.append(letter, copy, arrow);
 
       button.addEventListener("click", () => {
-        showScene(choice.destino);
+        journeySteps += 1;
+        renderScene(choice.next);
       });
 
-      elements.choices.appendChild(button);
+      choicesContainer.appendChild(button);
     });
   }
 
@@ -348,33 +231,23 @@ function showScene(sceneId) {
 }
 
 function updateProgress(scene) {
-  const totalStages = 5;
-  const progress = Math.min(
-    100,
-    Math.round((scene.etapa / totalStages) * 100)
-  );
+  const maxChapter = 6;
+  const progress = scene.ending
+    ? 100
+    : Math.min(95, Math.round(((scene.chapter - 1) / (maxChapter - 1)) * 100));
 
-  elements.progressText.textContent = scene.final
-    ? "Concluído"
-    : `Etapa ${scene.etapa} de ${totalStages}`;
-
-  elements.progressFill.style.width = `${progress}%`;
-  elements.progressFill.parentElement.setAttribute(
-    "aria-label",
-    `Progresso: ${progress}%`
-  );
+  progressText.textContent = `${progress}%`;
+  progressFill.style.width = `${progress}%`;
 }
 
 function restartAdventure() {
-  visitedScenes = new Set();
-  showScene("inicio");
-
-  document.getElementById("aventura").scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+  currentScene = initialScene;
+  visitedScenes = new Set([initialScene]);
+  journeySteps = 0;
+  renderScene(initialScene);
+  storyHint.textContent = "Uma nova aventura espera por você.";
 }
 
-elements.restart.addEventListener("click", restartAdventure);
+restartButton.addEventListener("click", restartAdventure);
 
-showScene("inicio");
+renderScene(initialScene);
