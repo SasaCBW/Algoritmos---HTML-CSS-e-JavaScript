@@ -4,170 +4,132 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#10172c">
+  <meta name="theme-color" content="#10172b">
   <meta name="description" content="Uma aventura interativa de escolhas, mistérios e descobertas.">
   <title>Além do Horizonte | Aventura Interativa</title>
   <link rel="stylesheet" href="./style.css">
   <script src="./script.js" defer></script>
 </head>
 <body>
-  <div class="background-glow glow-one"></div>
-  <div class="background-glow glow-two"></div>
-
   <header class="topbar">
-    <a class="brand" href="./index.html" aria-label="Página inicial">
+    <a class="brand" href="./index.html">
       <span class="brand-icon">✦</span>
-      <span>AVENTURA<span class="brand-light"> DIGITAL</span></span>
+      <span>ALÉM DO HORIZONTE</span>
     </a>
-    <span class="top-label">UMA HISTÓRIA INTERATIVA</span>
+    <span class="status"><span class="status-dot"></span> AVENTURA INTERATIVA</span>
   </header>
 
-  <main class="page-container">
-    <section class="hero" id="inicio">
+  <main class="container">
+    <section class="hero">
       <div class="hero-content">
-        <div class="eyebrow">
-          <span class="status-dot"></span>
-          SUA JORNADA COMEÇA AGORA
-        </div>
-
-        <h1>Além do<br><span>Horizonte.</span></h1>
-
+        <span class="eyebrow">UMA HISTÓRIA • MUITAS POSSIBILIDADES</span>
+        <h1>O seu destino<br>está nas <span>suas escolhas.</span></h1>
         <p class="hero-description">
-          Um mundo desconhecido. Decisões que mudam tudo.
-          Uma aventura na qual <strong>você escreve o próprio destino.</strong>
+          Uma mensagem misteriosa, uma floresta desconhecida e um segredo
+          capaz de mudar tudo. Você decide como essa história termina.
         </p>
-
         <div class="hero-details">
-          <span>✧ Mistério</span>
-          <span>✧ Exploração</span>
-          <span>✧ Suas escolhas</span>
+          <span>✧ História interativa</span>
+          <span>✧ Decisões e consequências</span>
+          <span>✧ Finais diferentes</span>
         </div>
       </div>
-
       <div class="hero-art" aria-hidden="true">
         <div class="orbit orbit-one"></div>
         <div class="orbit orbit-two"></div>
-        <div class="planet">
-          <div class="planet-shine"></div>
-        </div>
         <div class="moon"></div>
-        <div class="star star-one">✦</div>
-        <div class="star star-two">✧</div>
-        <div class="star star-three">✦</div>
-        <div class="star star-four">·</div>
         <div class="mountain mountain-back"></div>
         <div class="mountain mountain-front"></div>
-        <div class="art-caption">O DESCONHECIDO TE ESPERA</div>
+        <div class="light-beam"></div>
+        <div class="spark spark-one">✦</div>
+        <div class="spark spark-two">✧</div>
+        <div class="spark spark-three">✦</div>
       </div>
     </section>
 
-    <section class="game-section" id="aventura">
-      <div class="section-heading">
-        <div>
-          <span class="section-kicker">CAPÍTULO 01</span>
-          <h2>O começo da jornada</h2>
+    <section class="game-layout" aria-label="Jogo de aventura">
+      <aside class="side-panel">
+        <div class="panel-label">SUA JORNADA</div>
+        <div class="progress-heading">
+          <span>Progresso</span>
+          <strong id="progress-text">0%</strong>
         </div>
-        <div class="progress-info">
-          <span id="progress-text">Etapa 1</span>
-          <div class="progress-track">
-            <div class="progress-fill" id="progress-fill"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="game-card">
-        <div class="game-card-top">
-          <span class="chapter-tag"><span>✦</span> SUA HISTÓRIA</span>
-          <span class="game-indicator">
-            <span class="status-dot"></span> INTERATIVO
-          </span>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
         </div>
 
-        <div class="story-content" aria-live="polite" aria-atomic="true">
-          <div class="story-symbol" id="story-symbol">☾</div>
-          <h3 id="story-title">Uma mensagem misteriosa</h3>
-          <p id="story-text">
-            Você encontra uma carta antiga sobre uma cidade escondida
-            além das montanhas. Dizem que lá existe um segredo capaz de
-            mudar o futuro. Ao anoitecer, duas trilhas aparecem diante
-            de você: uma iluminada por cristais azuis e outra que
-            desaparece dentro de uma floresta.
-          </p>
+        <div class="side-divider"></div>
+
+        <div class="panel-label">DIÁRIO DE VIAGEM</div>
+        <div class="journal-icon">📖</div>
+        <p class="journal-text" id="journal-text">
+          Sua história ainda não começou. Prepare-se para descobrir o desconhecido.
+        </p>
+
+        <div class="side-divider"></div>
+
+        <div class="panel-label">LEMBRE-SE</div>
+        <p class="tip-text">
+          Cada escolha pode abrir um caminho diferente. Leia com atenção e siga sua intuição.
+        </p>
+      </aside>
+
+      <section class="story-card" aria-live="polite">
+        <div class="story-topline">
+          <span class="chapter-tag" id="chapter-tag">PRÓLOGO</span>
+          <span class="chapter-number" id="chapter-number">CAPÍTULO 01</span>
         </div>
 
-        <div class="choices-area">
-          <p class="choices-label" id="choices-label">QUAL SERÁ SUA ESCOLHA?</p>
-          <div class="choices" id="choices">
-            <button class="choice-button" data-choice="cristais">
-              <span class="choice-number">01</span>
-              <span class="choice-copy">
-                <strong>Seguir os cristais azuis</strong>
-                <small>Explorar uma trilha misteriosa.</small>
-              </span>
-              <span class="choice-arrow">↗</span>
-            </button>
+        <div class="story-symbol" id="story-symbol">✧</div>
+        <h2 id="story-title">A mensagem desconhecida</h2>
+        <p class="story-text" id="story-text">
+          São quase meia-noite quando seu celular vibra. Uma mensagem de um
+          número desconhecido aparece na tela: “Se quiser descobrir a verdade,
+          esteja na entrada da Floresta das Sombras antes do amanhecer.”
+          Você não conhece o remetente, mas reconhece o nome da floresta.
+          Há anos, pessoas contam histórias estranhas sobre aquele lugar.
+          O que você vai fazer?
+        </p>
 
-            <button class="choice-button" data-choice="floresta">
-              <span class="choice-number">02</span>
-              <span class="choice-copy">
-                <strong>Entrar na floresta</strong>
-                <small>Descobrir o que se esconde na escuridão.</small>
-              </span>
-              <span class="choice-arrow">↗</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="game-footer">
-          <span>✧ Cada escolha revela um novo caminho.</span>
-          <button id="restart-button" class="restart-button" type="button">
-            ↺ Reiniciar aventura
+        <div class="choices-label">ESCOLHA SEU PRÓXIMO PASSO</div>
+        <div class="choices" id="choices">
+          <button class="choice-button" data-choice="forest">
+            <span class="choice-letter">A</span>
+            <span class="choice-copy">
+              <strong>Ir até a floresta</strong>
+              <small>Enfrentar o desconhecido.</small>
+            </span>
+            <span class="choice-arrow">↗</span>
+          </button>
+          <button class="choice-button" data-choice="research">
+            <span class="choice-letter">B</span>
+            <span class="choice-copy">
+              <strong>Investigar a mensagem</strong>
+              <small>Buscar pistas antes de partir.</small>
+            </span>
+            <span class="choice-arrow">↗</span>
           </button>
         </div>
-      </div>
+
+        <div class="story-footer">
+          <span id="story-hint">Sua aventura começa agora.</span>
+          <button id="restart-button" class="restart-button" type="button">
+            ↻ Reiniciar aventura
+          </button>
+        </div>
+      </section>
     </section>
 
-    <section class="features">
-      <article class="feature-card">
-        <span class="feature-icon">⌘</span>
-        <h3>Faça suas escolhas</h3>
-        <p>Suas decisões definem os caminhos da história.</p>
-      </article>
-      <article class="feature-card">
-        <span class="feature-icon">✧</span>
-        <h3>Explore o desconhecido</h3>
-        <p>Descubra lugares secretos e enfrente desafios.</p>
-      </article>
-      <article class="feature-card">
-        <span class="feature-icon">◇</span>
-        <h3>Crie seu destino</h3>
-        <p>Chegue ao final seguindo suas próprias decisões.</p>
-      </article>
-    </section>
-
-    <section class="about-project">
-      <span class="section-kicker">POR TRÁS DA AVENTURA</span>
-      <h2>Imaginação que vira código.</h2>
-      <p>
-        Este projeto combina HTML para estruturar a página, CSS para
-        criar a identidade visual e JavaScript para transformar suas
-        escolhas em uma experiência interativa.
-      </p>
-      <div class="technology-list">
-        <span>HTML5</span>
-        <span>CSS3</span>
-        <span>JavaScript</span>
-      </div>
+    <section class="quote-section">
+      <span class="quote-mark">“</span>
+      <p>Grandes descobertas começam quando temos coragem de dar o primeiro passo.</p>
+      <span class="quote-caption">ALÉM DO HORIZONTE</span>
     </section>
   </main>
 
   <footer class="footer">
-    <a class="brand footer-brand" href="./index.html">
-      <span class="brand-icon">✦</span>
-      AVENTURA DIGITAL
-    </a>
-    <p>Uma aventura criada com curiosidade e código.</p>
-    <span class="footer-year">PROJETO EDUCACIONAL · 2026</span>
+    <span>ALÉM DO HORIZONTE</span>
+    <span>Uma aventura criada com HTML, CSS e JavaScript.</span>
   </footer>
 </body>
 </html>
